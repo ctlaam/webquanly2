@@ -1,0 +1,114 @@
+{% extends 'templates/index.html' %}
+    {% block content %}
+<div class="content">
+                        {% if messages %}
+
+                        {% for message in messages %}
+                        <div class="alert alert-info">
+                            {{ message }}
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                <div class="row">
+                    <div class="col-sm-7 col-6">
+                        <h4 class="page-title">Thông tin cá nhân</h4>
+                    </div>
+
+                    <div class="col-sm-5 col-6 text-right m-b-30">
+                        <a href="{% url 'user:csthongtin' %}" class="btn btn-primary btn-rounded"><i class="fa fa-plus"></i> Chỉnh sửa thông tin</a>
+                    </div>
+                </div>
+                <div class="card-box profile-header">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="profile-view">
+                                <div class="profile-img-wrap">
+                                    <div class="profile-img">
+                                        <a href="#"><img class="avatar" src="assets/img/doctor-03.jpg" alt=""></a>
+                                    </div>
+                                </div>
+                                <div class="profile-basic">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <div class="profile-info-left">
+                                                <h3 class="user-name m-t-0 mb-0">{{nd.ten}}</h3>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-md-7">
+                                            <ul class="personal-info">
+                                                <li>
+                                                    <span class="title">Số điện thoại:</span>
+                                                    <span class="text"><a href="#">{{nd.phone}}</a></span>
+                                                </li>
+                                                <li>
+                                                    <span class="title">Email:</span>
+                                                    <span class="text"><a href="#">{{ur.email}}</a></span>
+                                                </li>
+                                                <li>
+                                                    <span class="title">Ngày sinh:</span>
+                                                    <span class="text">{{nd.ngaysinh}}</span>
+                                                </li>
+
+                                                <li>
+                                                    <span class="title">Giới tính:</span>
+                                                    <span class="text">{{nd.gioitinh}}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+				<div class="profile-tabs">
+
+					<div class="tab-content">
+                        {% if nd %}
+						<div class="tab-pane show active" id="about-cont">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card-box">
+                            <h3 class="card-title">Danh sách bài tập của {{ nd.ten }}</h3>
+                            <div class="experience-box">
+                                <ul class="experience-list">
+                                    {% for baitap in nd.baitap_set.all %}
+                                    <li>
+                                        <div class="experience-user">
+                                            <div class="before-circle"></div>
+                                        </div>
+                                        <div class="experience-content">
+                                            <div class="timeline-content">
+                                               <p> <a href="{% url 'user:xoabaitap' baitap.id %}">Xóa</a>    <a href="{% url 'user:updatebaitap' baitap.id %}">Sửa</a></p>
+                                                Tên bài tập :{{ baitap.ten }}
+                                                <div>GVHD :{{ baitap.giaovienhd }}</div>
+                                                <span class="time">Mô tả :{{ baitap.mota }}</span>
+                                                <a href ="{{baitap.filebaocao.url}}" download><span class="time">{{ baitap.filebaocao }}</span></a>
+                                                <a href ="{{baitap.filezip.url}}" download><span class="time">{{ baitap.filezip }}</span></a>
+
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </div>
+
+                 {% endif %}
+
+						<div class="tab-pane" id="bottom-tab2">
+							Tab content 2
+						</div>
+						<div class="tab-pane" id="bottom-tab3">
+							Tab content 3
+						</div>
+					</div>
+				</div>
+            </div>
+{% endblock %}

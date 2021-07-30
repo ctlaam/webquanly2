@@ -1,0 +1,63 @@
+{% extends 'templates/index.html' %}
+    {% block content %}
+            <div class="content">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                        <h4 class="page-title">Thông tin cá nhân</h4>
+                    </div>
+                </div>
+                 <form action="" method="POST">
+                <div class="row">
+                    <div class="col-lg-8 offset-lg-2">
+                            {% csrf_token %}
+                            <div class="row">
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Full Name</label>
+                                        {{nd.ten}}
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Email</label>
+                                        {{ur.email}}
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Phone</label>
+                                        {{nd.phone}}
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Birthday</label>
+                                        {{nd.ngaysinh}}
+
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+
+                                </div>
+
+                                <div class="col-sm-6">
+								     <div class="form-group">
+                                        <label>Gender</label>
+                                         {{nd.gioitinh}}
+
+ 									</div>
+                                </div>
+
+                            </div>
+                            <div class="m-t-20 text-center">
+                                <button class="btn btn-primary submit-btn" data-href-template="">Lưu</button>
+                            </div>
+                    </div>
+                </div>
+            </div>
+</form>
+    {% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'templates/index.html' %}
+    {% block content %}
+    {% load static %}
+
+  <body>
+<div class="container mt-5">
+    <form  action="" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+           <label for="{{form.file_name.id_for_label}}">Tên bài tập</label>
+          {{form.ten}}
+        </div>
+        <div class="form-group">
+          <label for="{{form.file_name.id_for_label}}">Mô tả</label>
+          {{form.mota}}
+        </div>
+        <div class="form-group">
+          <label for="{{form.file_name.id_for_label}}">Giáo viên hướng dẫn</label>
+          {{form.giaovienhd}}
+        </div>
+        <div class="form-group">
+            <label for="{{form.files_data.id_for_label}}">File 1</label>
+            {{form.filebaocao}}
+          </div>
+        <div class="form-group">
+            <label for="{{form.files_data.id_for_label}}">File 2</label>
+            {{form.filezip}}
+          </div>
+          {% csrf_token %}
+
+
+        <button type="submit" class="btn btn-primary">Nộp</button>
+      </form>
+
+</div>
+
+
+
+  ` <script src="{% static 'assets/js/jquery-3.2.1.min.js' %}"></script>
+	<script src="{% static 'assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'assets/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'assets/js/app.js' %}"></script>
+  </body>
+{% endblock %}

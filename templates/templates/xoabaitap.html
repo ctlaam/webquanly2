@@ -1,0 +1,22 @@
+{% extends 'templates/index.html' %}
+    {% block content %}
+    <div class="content">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <h4 class="page-title">Xóa học sinh</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <p>Bạn có muốn xóa baitap "{{baitap.ten}}" này ?</p>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="m-t-20 text-center">
+                        <a href="{% url 'user:danhsachhocsinh' %} "><button type="button" class="btn btn-outline-secondary">Hủy</button></a>
+                        <button type="submit" class="btn btn-outline-primary">Xóa</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
